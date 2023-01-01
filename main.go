@@ -34,11 +34,18 @@ func superAdd(numbers ...int) int {
 		fmt.Println(numbers[i])
 	}
 
+	total := 0
+	for _, number := range numbers {
+		total += number
+	}
+	return total
+
 	return 1
 }
 
 func main() {
-	superAdd(1, 2, 3, 4, 5, 6)
+	result := superAdd(1, 2, 3, 4, 5, 6)
+	fmt.Println(result)
 	//totalLength, upperName := lenAndUpper("hyunsoo")
 	//fmt.Println(totalLength, upperName)
 	//fmt.Println(multiply(2, 2))
