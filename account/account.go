@@ -1,12 +1,17 @@
 package account
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 // Account  struct
 type Account struct {
 	owner   string //public : 대문자, private : 소문로
 	balance int
 }
+
+var errNoMoney = errors.New("Can't withdraw")
 
 // NewAccount *로 복사본을 전달해서 속도를 빠르게 함
 // NewAccount creates Account
@@ -27,8 +32,21 @@ func (a Account) Balance() int {
 // Withdrawl from your account
 func (a *Account) Withdrawl(amount int) error {
 	if a.balance < amount {
-		return errors.New("Can't withdraw you are poor")
+		return errNoMoney
 	}
 	a.balance -= amount
 	return nil
+}
+
+// ChangeOwner of the account
+func (a *Account) ChangeOwner(newOwner string) {
+	a.owner = newOwner
+}
+
+func (a Account) Owner() string {
+	return a.owner
+}
+
+func (a Account) String() string {
+	return fmt.Sprint(a.Owner(), "'s account.\n Has: ", a.Balance())
 }
