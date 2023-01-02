@@ -43,11 +43,34 @@ func superAdd(numbers ...int) int {
 	return 1
 }
 
+type person struct {
+	name    string
+	age     int
+	favFood []string
+}
+
 func main() {
-	result := superAdd(1, 2, 3, 4, 5, 6)
-	fmt.Println(result)
-	//totalLength, upperName := lenAndUpper("hyunsoo")
-	//fmt.Println(totalLength, upperName)
-	//fmt.Println(multiply(2, 2))
-	//repeatMe("sfd", "dsfd", "dsf", "sdf", "sfd")
+	favFood := []string{"kimchi", "ramen"}
+	hyunsoo := person{name: "hyunsoo", age: 26, favFood: favFood}
+	fmt.Println(hyunsoo)
+
+	nico := map[string]string{"name": "nico", "age": "12"}
+	for key, value := range nico {
+		fmt.Println(key, value)
+	}
+	fmt.Println(nico)
+
+	a := 2
+	b := &a //a의 메모리 주소에 연결되어 있기 때문에 a가 변경되면 같이 변경됨
+	a = 5
+	*b = 20
+	fmt.Println(a)
+	//git test
+
+	names := []string{"nico", "lynn", "dal"}
+	//names[3] = "alala"
+	//names[4] = "alala"
+	//names = append(names, "flynn") //modify가 아니고 새로운 slice를 리턴함
+	//slice는 Array와 같은 역할을 하는 애들이지만 length 제한이 없음
+	fmt.Println(names)
 }
