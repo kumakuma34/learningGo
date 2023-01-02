@@ -7,5 +7,12 @@ import (
 
 func main() {
 	account := account.NewAccount("nico")
-	fmt.Println(account)
+	account.Deposit(10)
+	fmt.Println(account.Balance())
+	err := account.Withdrawl(20)
+	if err != nil {
+		fmt.Println(err)
+		//log.Fatalln(err)
+	}
+	fmt.Println(account.Balance())
 }
